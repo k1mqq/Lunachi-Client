@@ -44,8 +44,6 @@ import net.minecraft.network.play.server.SPacketTitle;
 public class Client {
 	public static String name = "Lunachi-Client", version = "2.3";
 	
-	public static final String BuildMode = "Dev";
-	
 	public static List<Module> modules = new ArrayList<Module>();
 	public static Minecraft mc = Minecraft.getMinecraft();
 	
@@ -64,7 +62,6 @@ public class Client {
 	public static void startup() {
 		settings = new SettingManager();
 		Display.setTitle(name + " Ver" + version);
-		//Display.setIcon(null);
 		FontUtil.bootstrap();
 		
 		//
