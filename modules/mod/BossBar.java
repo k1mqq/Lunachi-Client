@@ -1,0 +1,45 @@
+package KeemaCurry.modules.mod;
+
+import java.util.ArrayList;
+
+import KeemaCurry.Client;
+import KeemaCurry.Event.Event;
+import KeemaCurry.Event.listener.EventRenderGUI;
+import KeemaCurry.modules.Category;
+import KeemaCurry.modules.Module;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockTorch;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+
+public class BossBar extends Module{
+
+	public BossBar() {
+		super("TorchCounter",Category.HUD);
+	}
+	
+	
+	
+	public void onEvent(Event e) {
+		if(e instanceof EventRenderGUI) {
+			int count = 0;
+			for(int i = 0; i < 9*4; i++) {
+				ItemStack is = mc.player.inventory.getStackInSlot(i);
+				
+				if(is == null || is.getItem() == null) continue;
+				
+				if(Block.getBlockFromItem(is.getItem()) instanceof BlockTorch) {
+					count += is.stackSize;
+				}
+			}
+			FontRenderer fr = mc.fontRendererObj;
+			ScaledResolution sr = new ScaledResolution(mc);
+        	fr.drawStringWithShadow("˜eTorch~" + count, sr.getScaledWidth() - fr.getStringWidth("Torch~" + count), 1, -1);
+		}
+	}
+}
