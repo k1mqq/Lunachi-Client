@@ -53,7 +53,6 @@ public class Client {
 	public static SettingManager settings;
 	public static menu menu;
 	
-	public static int job;
 	public static FontRenderer fr = mc.fontRendererObj;
 	public static DiscordUtil dis; 
 	
