@@ -17,6 +17,7 @@ import KeemaCurry.modules.Category;
 import KeemaCurry.modules.Module;
 import KeemaCurry.modules.mod.AntiNausea;
 import KeemaCurry.modules.mod.AutoBridging;
+import KeemaCurry.modules.mod.BossBar;
 import KeemaCurry.modules.mod.Debag;
 import KeemaCurry.modules.mod.EffectHUD;
 import KeemaCurry.modules.mod.HudEditer;
@@ -39,7 +40,6 @@ import KeemaCurry.utils.SaveUtil.SaveLoad;
 import KeemaCurry.utils.font.FontUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.network.play.server.SPacketTitle;
 
 public class Client {
 	public static String name = "Lunachi-Client", version = "2.3";
@@ -86,6 +86,7 @@ public class Client {
 		modules.add(new NiconicoChat());
 		modules.add(new Skill());
 		modules.add(new MP());
+		modules.add(new BossBar());
 		//modules.add(new BreakTime());
 		
 		modules.sort(Comparator.comparingInt(m -> fr.getStringWidth(((Module)m).name)).reversed());
@@ -113,7 +114,7 @@ public class Client {
 				mc.displayGuiScreen(Client.menu);
 			}
 			if(((EventKey) e).getKey() == Keyboard.KEY_LSHIFT) {
-				getModuleByName("AutoBridging").toggle();
+				//getModuleByName("AutoBridging").toggle();
 			}
 		}
 		if(e instanceof EventUpdate) {
