@@ -34,7 +34,15 @@ public class BossBar extends Module{
 						mc.ingameGUI.drawTexturedModalRect(x, y, 0, 15, i, 5);
 					}
 					
-					
+					if(entity.getHeldItemMainhand() != null && entity.getHeldItemMainhand().getMaxDamage() == 1561) {
+						mc.getTextureManager().bindTexture(GUI_BARS_TEXTURES);
+						
+						mc.ingameGUI.drawTexturedModalRect(x, y, 0, 10, 182, 5);
+						
+						int i = (int)((entity.getHealth() / entity.getMaxHealth()) * 183.0F);
+						
+						mc.ingameGUI.drawTexturedModalRect(x, y, 0, 15, i, 5);
+					}
 				}
 			}
 		}
