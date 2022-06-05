@@ -1,7 +1,5 @@
 package KeemaCurry.modules.mod;
 
-import java.util.Collections;
-
 import org.lwjgl.input.Keyboard;
 
 import KeemaCurry.Client;
@@ -9,28 +7,28 @@ import KeemaCurry.Event.Event;
 import KeemaCurry.Event.listener.EventKey;
 import KeemaCurry.Event.listener.EventPacket;
 import KeemaCurry.Event.listener.EventRenderGUI;
-import KeemaCurry.Event.listener.EventUpdate;
 import KeemaCurry.Settings.Setting;
 import KeemaCurry.modules.Category;
 import KeemaCurry.modules.Module;
 import KeemaCurry.utils.ColorUtill;
 import KeemaCurry.utils.font.FontUtil;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.network.play.client.CPacketPlayer;
-import net.minecraft.network.play.client.CPacketPlayerDigging;
-import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 
 public class Debag extends Module{
 
 	public Debag() {
 		super("Debag",Category.CLIENT);
+	}
+	
+	
+	@Override
+	public void onEnable() {
+		mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+		super.onEnable();
 	}
 	
 	@Override

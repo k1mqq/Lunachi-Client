@@ -16,9 +16,9 @@ import KeemaCurry.Settings.SettingManager;
 import KeemaCurry.modules.Category;
 import KeemaCurry.modules.Module;
 import KeemaCurry.modules.mod.AntiNausea;
-import KeemaCurry.modules.mod.AutoBridging;
 import KeemaCurry.modules.mod.BossBar;
 import KeemaCurry.modules.mod.Debag;
+import KeemaCurry.modules.mod.Discord;
 import KeemaCurry.modules.mod.EffectHUD;
 import KeemaCurry.modules.mod.HudEditer;
 import KeemaCurry.modules.mod.ItemScale;
@@ -34,7 +34,8 @@ import KeemaCurry.modules.mod.TargetHUD;
 import KeemaCurry.modules.mod.TorchCounter;
 import KeemaCurry.modules.mod.UniqueItems;
 import KeemaCurry.ui.menu;
-import KeemaCurry.utils.DiscordUtil;
+import KeemaCurry.utils.DiscordBot;
+import KeemaCurry.utils.DiscordRP;
 import KeemaCurry.utils.SessionChanger;
 import KeemaCurry.utils.SaveUtil.SaveLoad;
 import KeemaCurry.utils.font.FontUtil;
@@ -54,7 +55,7 @@ public class Client {
 	public static menu menu;
 	
 	public static FontRenderer fr = mc.fontRendererObj;
-	public static DiscordUtil dis; 
+	public static DiscordRP dis; 
 	
 	public static int counter = 0;
 	
@@ -67,7 +68,7 @@ public class Client {
 		SessionChanger.getInstance().setUserOffline("KIMA238");
 		modules.add(new Debag());
 		
-		modules.add(new AutoBridging());
+		//modules.add(new AutoBridging());
 		modules.add(new SpawnerRenderer());
 		modules.add(new PlayerHUD());
 		modules.add(new EffectHUD());
@@ -87,13 +88,16 @@ public class Client {
 		modules.add(new Skill());
 		modules.add(new MP());
 		modules.add(new BossBar());
+		modules.add(new Discord());
 		//modules.add(new BreakTime());
 		
 		modules.sort(Comparator.comparingInt(m -> fr.getStringWidth(((Module)m).name)).reversed());
 		saveload.load();
 		menu = new menu();
-		dis = new DiscordUtil();
+		dis = new DiscordRP();
 		dis.start();
+		
+		DiscordBot.login();
 	}
 	
 	public static void shutdown() {

@@ -1,13 +1,19 @@
 package KeemaCurry.utils;
 
+import javax.security.auth.login.LoginException;
+
 import KeemaCurry.Client;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 import net.arikia.dev.drpc.DiscordUser;
 import net.arikia.dev.drpc.callbacks.ReadyCallback;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 
-public class DiscordUtil {
+public class DiscordRP {
 
 	boolean runnning = true;
 	long created = 0;
@@ -18,7 +24,6 @@ public class DiscordUtil {
 		DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler(new ReadyCallback() {
 			@Override
 			public void apply(DiscordUser user) {
-
                 Client.dis.update("Playing TUSB with Lunachi-!!", "");
 			}
 		}).build();
