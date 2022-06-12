@@ -46,6 +46,9 @@ public class SaveLoad {
 					if(set.mode == "Key") {
 						toSave.add("SET:" + set.getName() + ":" + set.value_key);
 					}
+					if(set.mode == "String") {
+						toSave.add("SET:" + set.getName() + ":" + set.getValue_s());
+					}
 				}
 			}
 			
@@ -92,11 +95,8 @@ public class SaveLoad {
 			
 			for(String s : lines) {
 				String[] args = s.split(":");
-				if(s.toLowerCase().startsWith("mod:")) {
-					mod.setToggled(Boolean.parseBoolean(args[2]));
-					mod.setX(Integer.parseInt(args[3]));
-					mod.setY(Integer.parseInt(args[4]));
-				}else if(s.toLowerCase().startsWith("set:")) {
+				
+				if(s.toLowerCase().startsWith("set:")) {
 					List<Setting> settings = Client.settings.getSettingsByMod(mod);
 					
 					if(settings != null) {
@@ -111,14 +111,18 @@ public class SaveLoad {
 								if(set.mode == ("Key")) {
 									set.setValue_key((int) Float.parseFloat(args[2]));
 								}
+								if(set.mode == ("String")) {
+									set.setValue_s(args[2]);
+								}
 							}
 						}
 					}
+				}else if(s.toLowerCase().startsWith("mod:")) {
+					mod.setToggled(Boolean.parseBoolean(args[2]));
+					mod.setX(Integer.parseInt(args[3]));
+					mod.setY(Integer.parseInt(args[4]));
 				}
 			}
 		}
-		
-		
-		
 	}
 }

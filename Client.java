@@ -96,8 +96,6 @@ public class Client {
 		menu = new menu();
 		dis = new DiscordRP();
 		dis.start();
-		
-		DiscordBot.login();
 	}
 	
 	public static void shutdown() {

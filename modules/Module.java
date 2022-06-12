@@ -93,10 +93,8 @@ public class Module {
 	}
 	
 	public void onEnable() {
-		Client.addChatMessage(this.name + "‚ª—LŒø‚É‚È‚è‚Ü‚µ‚½");
 	}
 	public void onDisable() {
-		Client.addChatMessage(this.name + "‚ª–³Œø‚É‚È‚è‚Ü‚µ‚½");
 	}
 	public void onEvent(Event e) {}
 	public void onRender() {}

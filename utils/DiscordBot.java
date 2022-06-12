@@ -18,9 +18,23 @@ public class DiscordBot extends ListenerAdapter{
 	
 	
 	private static JDA jda = null;
-    private static String BOT_TOKEN = "OTMwMzY5NzA0NDIwMzM1NjM3.Yd04Tg.nHcaU8dVINdWcQBI4JbWpcQOKcM";
+    private static String BOT_TOKEN;
+    
+    private static String TEXT_CHANNEL;
 	
-    public static String getBOT_TOKEN() {
+    public static String getTEXT_CHANNEL() {
+		return TEXT_CHANNEL;
+	}
+
+
+
+	public static void setTEXT_CHANNEL(String tEXT_CHANNEL) {
+		TEXT_CHANNEL = tEXT_CHANNEL;
+	}
+
+
+
+	public static String getBOT_TOKEN() {
 		return BOT_TOKEN;
 	}
 
@@ -47,7 +61,7 @@ public class DiscordBot extends ListenerAdapter{
 	 
 	
 	public static void say(String message) {
-		tc = jda.getTextChannelById(982215004386373692l);
+		tc = jda.getTextChannelById(TEXT_CHANNEL);
 		tc.sendMessage(message).queue();
 	}
 	
@@ -57,10 +71,11 @@ public class DiscordBot extends ListenerAdapter{
 	
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
-		if(event.getAuthor().isBot() || !Client.getModuleByName("DiscordBot").isEnabled())
-			return;
-		String message = "Åò1Åòl[Discord]Åòr " + "<" + event.getAuthor().getName() + "> " + event.getMessage().getContentRaw();
-		Minecraft.getMinecraft().player.addChatMessage(message);
+		if(!event.getAuthor().isBot() && Client.getModuleByName("DiscordBot").isEnabled() && event.getChannel() == jda.getTextChannelById(TEXT_CHANNEL)){
+			String message = "Åò1Åòl[Discord]Åòr " + "<" + event.getAuthor().getName() + "> " + event.getMessage().getContentRaw();
+			Minecraft.getMinecraft().player.addChatMessage(message);
+		}
+		
 		super.onMessageReceived(event);
 	}
 }
