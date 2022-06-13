@@ -73,7 +73,7 @@ public class Discord extends Module{
 					
 				}else {
 					try {
-						DiscordBot.say("<" + mc.player.getName() + ">" + ((EventChat) e).getMessage());
+						DiscordBot.say("<" + mc.player.getName() + "> " + ((EventChat) e).getMessage());
 					}catch (Exception ex) {
 						Client.addChatMessage("§cエラーが発生しました。ボットのトークンとチャンネルを指定してください");
 						ex.printStackTrace();
