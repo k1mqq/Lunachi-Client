@@ -16,6 +16,7 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.network.play.client.CPacketPlayer;
+import net.minecraft.network.play.server.SPacketBlockBreakAnim;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 
 public class Debag extends Module{
@@ -64,8 +65,8 @@ public class Debag extends Module{
 		
 			mc.rightClickDelayTimer = 0;
 		if(e instanceof EventKey) {
-			if(((EventKey) e).getKey() == Keyboard.KEY_G) {
-				mc.getConnection().sendPacket(new CPacketPlayer(true));
+			if(((EventKey) e).getKey() == Keyboard.KEY_P) {
+				Client.addChatMessage(Boolean.toString(mc.player.getHeldItemMainhand().hasEffect()));
 			}
 		}
 		
@@ -75,6 +76,11 @@ public class Debag extends Module{
 				if(((EventPacket) e).getPacket() instanceof SPacketEntityVelocity) {
 					e.setCancelled(true);
 				}
+			}
+			
+			if(((EventPacket) e).getPacket() instanceof SPacketBlockBreakAnim) {
+				Client.addChatMessage("awe");
+				e.setCancelled(true);
 			}
 		}
 	}

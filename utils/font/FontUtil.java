@@ -50,16 +50,16 @@ public class FontUtil {
         new Thread(() ->
         {
             Map<String, Font> locationMap = new HashMap<>();
-            normal_ = getFont(locationMap, "arial.ttf", 19);
+            normal_ = getFont(locationMap, "Vegur-Yg1a.ttf", 19);
             
             Map<String, Font> locationMap_ = new HashMap<>();
-            normal25_ = getFont(locationMap_, "arial.ttf", 25);
+            normal25_ = getFont(locationMap_, "Vegur-Yg1a.ttf", 25);
             
             Map<String, Font> locationMap__ = new HashMap<>();
-            mini_ = getFont(locationMap__, "arial.ttf", 11);
+            mini_ = getFont(locationMap__, "Vegur-Yg1a.ttf", 11);
             
             Map<String, Font> locationMap___ = new HashMap<>();
-            big_ = getFont(locationMap___, "arial.ttf", 44);
+            big_ = getFont(locationMap___, "Vegur-Yg1a.ttf", 44);
             
             completed++;
             

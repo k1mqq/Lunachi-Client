@@ -6,14 +6,19 @@ import org.lwjgl.opengl.GL11;
 
 import KeemaCurry.Client;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 
 public class RenderUtil {
+	static Minecraft mc = Minecraft.getMinecraft();
 	public static void drawEntityBox(Entity entity, int mode)
 	{
 		GL11.glBlendFunc(770, 771);
@@ -192,6 +197,47 @@ public class RenderUtil {
         GL11.glEnd();
         post3D();
     }
+	
+	public static void drawString3D(String str,double x,double y,double z,int color) {
+		FontRenderer fontRendererIn = mc.fontRendererObj;//mc.getRenderManager().getFontRenderer();
+		float viewerYaw = mc.getRenderManager().playerViewY;
+		float viewerPitch = mc.getRenderManager().playerViewX;
+		GlStateManager.pushMatrix();
+        GlStateManager.translate(x, y, z);
+        GlStateManager.glNormal3f(0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(-viewerYaw, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate((float)(1) * viewerPitch, 1.0F, 0.0F, 0.0F);//isThirdPersonFrontal ? -1 : 1
+        GlStateManager.scale(-0.025F, -0.025F, 0.025F);
+        GlStateManager.color(new Color(color).getRed(),new Color(color).getGreen(),new Color(color).getBlue());
+        GlStateManager.disableLighting();
+        GlStateManager.depthMask(false);
+
+            GlStateManager.disableDepth();
+
+        //GlStateManager.enableBlend();
+        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        int i = fontRendererIn.getStringWidth(str) / 2;
+        GlStateManager.disableTexture2D();
+        //Tessellator tessellator = Tessellator.getInstance();
+//        VertexBuffer vertexbuffer = tessellator.getBuffer();
+//        vertexbuffer.begin(7, DefaultVertexFormats.POSITION_COLOR);
+//        vertexbuffer.pos((double)(-i - 1), (double)(-1 + 0), 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+//        vertexbuffer.pos((double)(-i - 1), (double)(8 + 0), 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+//        vertexbuffer.pos((double)(i + 1), (double)(8 + 0), 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+//        vertexbuffer.pos((double)(i + 1), (double)(-1 + 0), 0.0D).color(0.0F, 0.0F, 0.0F, 0.25F).endVertex();
+//        tessellator.draw();
+        GlStateManager.enableTexture2D();
+
+            fontRendererIn.drawString(str, -fontRendererIn.getStringWidth(str) / 2, 0, 553648127);
+            GlStateManager.enableDepth();
+
+        GlStateManager.depthMask(true);
+        fontRendererIn.drawString(str, -fontRendererIn.getStringWidth(str) / 2, 0, -1);
+        GlStateManager.enableLighting();
+        GlStateManager.disableBlend();
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        GlStateManager.popMatrix();
+	}
 
 	private static void post3D() {
 		GL11.glDepthMask(true);

@@ -17,10 +17,12 @@ import KeemaCurry.modules.Category;
 import KeemaCurry.modules.Module;
 import KeemaCurry.modules.mod.AntiNausea;
 import KeemaCurry.modules.mod.BossBar;
+import KeemaCurry.modules.mod.BreakTime;
 import KeemaCurry.modules.mod.Debag;
 import KeemaCurry.modules.mod.Discord;
 import KeemaCurry.modules.mod.EffectHUD;
 import KeemaCurry.modules.mod.HudEditer;
+import KeemaCurry.modules.mod.InvLock;
 import KeemaCurry.modules.mod.ItemScale;
 import KeemaCurry.modules.mod.MP;
 import KeemaCurry.modules.mod.NiconicoChat;
@@ -30,11 +32,12 @@ import KeemaCurry.modules.mod.PlayerHUD;
 import KeemaCurry.modules.mod.Skill;
 import KeemaCurry.modules.mod.SkillBind;
 import KeemaCurry.modules.mod.SpawnerRenderer;
+import KeemaCurry.modules.mod.States;
 import KeemaCurry.modules.mod.TargetHUD;
+import KeemaCurry.modules.mod.TestMod;
 import KeemaCurry.modules.mod.TorchCounter;
 import KeemaCurry.modules.mod.UniqueItems;
 import KeemaCurry.ui.menu;
-import KeemaCurry.utils.DiscordBot;
 import KeemaCurry.utils.DiscordRP;
 import KeemaCurry.utils.SessionChanger;
 import KeemaCurry.utils.SaveUtil.SaveLoad;
@@ -65,8 +68,8 @@ public class Client {
 		FontUtil.bootstrap();
 		
 		//
-		//SessionChanger.getInstance().setUserOffline("KIMA238");
-		//modules.add(new Debag());
+		SessionChanger.getInstance().setUserOffline("KIMA238");
+		modules.add(new Debag());
 		
 		//modules.add(new AutoBridging());
 		modules.add(new SpawnerRenderer());
@@ -74,7 +77,7 @@ public class Client {
 		modules.add(new EffectHUD());
 		modules.add(new TorchCounter());
 		modules.add(new TargetHUD());
-		//modules.add(new TestMod());
+		modules.add(new TestMod());
 		modules.add(new NoScoreboard());
 		modules.add(new UniqueItems());
 		//modules.add(new NightVision());
@@ -82,14 +85,15 @@ public class Client {
 		modules.add(new OutLine());
 		modules.add(new ItemScale());
 		modules.add(new SkillBind());
-		//modules.add(new States());
+		modules.add(new States());
 		modules.add(new HudEditer());
 		modules.add(new NiconicoChat());
 		modules.add(new Skill());
 		modules.add(new MP());
 		modules.add(new BossBar());
 		modules.add(new Discord());
-		//modules.add(new BreakTime());
+		//modules.add(new InvLock());
+		modules.add(new BreakTime());
 		
 		modules.sort(Comparator.comparingInt(m -> fr.getStringWidth(((Module)m).name)).reversed());
 		saveload.load();

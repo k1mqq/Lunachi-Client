@@ -21,6 +21,10 @@ public class TestMod extends Module{
 	int color = new Color(255,255,47).getRGB();
 	
 	public void onRender() {
+		RenderUtil.drawString3D(String.valueOf(mc.playerController.curBlockDamageMP), (float) (mc.player.posX - mc.getRenderManager().renderPosX),
+				(float) (mc.player.posY - mc.getRenderManager().renderPosY),
+				(float) (mc.player.posZ - mc.getRenderManager().renderPosZ), color);
+		
 		RenderUtil.drawLine3D(
 				(float) (mc.player.posX - mc.getRenderManager().renderPosX - f),
 				(float) (mc.player.posY - mc.getRenderManager().renderPosY),
@@ -55,7 +59,4 @@ public class TestMod extends Module{
 				color);
 	}
 	
-	public void onEvent(Event e) {
-		
-	}
 }

@@ -1,34 +1,12 @@
 package KeemaCurry.modules.mod;
 
-import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 
-import KeemaCurry.Client;
 import KeemaCurry.Event.Event;
-import KeemaCurry.Event.listener.EventKey;
-import KeemaCurry.Event.listener.EventPacket;
-import KeemaCurry.Event.listener.EventUpdate;
 import KeemaCurry.modules.Category;
 import KeemaCurry.modules.Module;
-import net.minecraft.network.play.client.CPacketAnimation;
-import net.minecraft.network.play.client.CPacketClickWindow;
-import net.minecraft.network.play.client.CPacketHeldItemChange;
-import net.minecraft.network.play.client.CPacketInput;
-import net.minecraft.network.play.client.CPacketKeepAlive;
-import net.minecraft.network.play.client.CPacketPlayerAbilities;
-import net.minecraft.network.play.client.CPacketPlayerDigging;
-import net.minecraft.network.play.client.CPacketPlayerDigging.Action;
-import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
-import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
-import net.minecraft.network.play.client.CPacketUseEntity;
-import net.minecraft.network.play.client.CPacketVehicleMove;
-import net.minecraft.network.play.server.SPacketBlockAction;
-import net.minecraft.network.play.server.SPacketBlockBreakAnim;
-import net.minecraft.network.play.server.SPacketEntityVelocity;
-import net.minecraft.network.play.server.SPacketTitle;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import KeemaCurry.utils.RenderUtil;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 
 public class BreakTime extends Module{
 
@@ -37,19 +15,16 @@ public class BreakTime extends Module{
 	}
 	
 	public void onRender() {
+		BlockPos blockpos = mc.objectMouseOver.getBlockPos();
+		if(blockpos != null && !mc.world.isAirBlock(blockpos) && Mouse.isButtonDown(0)) {
+			RenderUtil.drawString3D(String.valueOf(Math.floor(mc.playerController.curBlockDamageMP * 1000) / 10) + "Åì", (float) (blockpos.getX() + 0.5f - mc.getRenderManager().renderPosX),
+					(float) (blockpos.getY() +0.5f - mc.getRenderManager().renderPosY),
+					(float) (blockpos.getZ() + 0.5f - mc.getRenderManager().renderPosZ), -1);
+		}
 	}
 	
 	public void onEvent(Event e) {
-		if(e instanceof EventPacket){
-			if(((EventPacket) e).getPacket() instanceof CPacketPlayerDigging) {
-				CPacketPlayerDigging packet = (CPacketPlayerDigging)((EventPacket) e).getPacket();
-				
-				if(packet.getAction() == Action.START_DESTROY_BLOCK) {
-					float speed = mc.player.getDigSpeed(mc.world.getBlockState(mc.objectMouseOver.getBlockPos()));
-					Client.addChatMessage(String.valueOf(speed));
-				}
-			}
-		}
+		
 	}
 	
 }

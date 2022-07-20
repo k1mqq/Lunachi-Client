@@ -61,6 +61,7 @@ public class SpawnerRenderer extends Module{
 					}else {
 						range = -1;
 					}
+					
 					RenderUtil.spawner(
 							((TileEntity) o).getPos().getX() - mc.getRenderManager().renderPosX,
 							((TileEntity) o).getPos().getY() - mc.getRenderManager().renderPosY,
