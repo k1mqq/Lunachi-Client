@@ -22,10 +22,10 @@ import KeemaCurry.modules.mod.Debag;
 import KeemaCurry.modules.mod.Discord;
 import KeemaCurry.modules.mod.EffectHUD;
 import KeemaCurry.modules.mod.HudEditer;
-import KeemaCurry.modules.mod.InvLock;
 import KeemaCurry.modules.mod.ItemScale;
 import KeemaCurry.modules.mod.MP;
 import KeemaCurry.modules.mod.NiconicoChat;
+import KeemaCurry.modules.mod.NoGlitchBlock;
 import KeemaCurry.modules.mod.NoScoreboard;
 import KeemaCurry.modules.mod.OutLine;
 import KeemaCurry.modules.mod.PlayerHUD;
@@ -94,6 +94,7 @@ public class Client {
 		modules.add(new Discord());
 		//modules.add(new InvLock());
 		modules.add(new BreakTime());
+		modules.add(new NoGlitchBlock());
 		
 		modules.sort(Comparator.comparingInt(m -> fr.getStringWidth(((Module)m).name)).reversed());
 		saveload.load();
