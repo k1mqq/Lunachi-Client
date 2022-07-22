@@ -96,7 +96,7 @@ public class Client {
 		modules.add(new BreakTime());
 		modules.add(new NoGlitchBlock());
 		
-		modules.sort(Comparator.comparingInt(m -> fr.getStringWidth(((Module)m).name)).reversed());
+		modules.sort(Comparator.comparing(it -> it.name));
 		saveload.load();
 		menu = new menu();
 		dis = new DiscordRP();
