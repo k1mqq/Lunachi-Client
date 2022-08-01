@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 public class BreakTime extends Module{
 
 	public BreakTime() {
-		super("BreakTime",Category.CLIENT);
+		super("BreakDamage",Category.CLIENT);
 	}
 	
 	public void onRender() {
