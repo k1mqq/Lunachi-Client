@@ -67,8 +67,8 @@ public class Client {
 		FontUtil.bootstrap();
 		
 		//
-		SessionChanger.getInstance().setUserOffline("KIMA238");
-		modules.add(new Debag());
+//		SessionChanger.getInstance().setUserOffline("KIMA238");
+//		modules.add(new Debag());
 		
 		//modules.add(new AutoBridging());
 		modules.add(new SpawnerRenderer());

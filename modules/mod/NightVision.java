@@ -20,12 +20,11 @@ public class NightVision extends Module{
 	
 	@Override
 	public void setup() {
-		Client.settings.rSetting(new Setting("Gamma", this, 0,0, 10, false));
 		super.setup();
 	}
 	public void onEvent(Event e) {
 		if(e instanceof EventUpdate) {
-			mc.gameSettings.gammaSetting =  Client.settings.getSettingsByMod(this).get(0).getValue_f();
+			mc.gameSettings.gammaSetting = 100;
 		}
 	}
 	
