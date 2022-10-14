@@ -53,28 +53,31 @@ public class SpawnerRenderer extends Module{
 			}
 			
 			range = 0;
-			for(Object o : mc.world.loadedTileEntityList) {
-				if(o instanceof TileEntityMobSpawner) {
-					if(Client.settings.getSettingsByMod(this).get(0).isValue_b() &&
-							mc.player.getDistanceSq(((TileEntity) o).getPos()) < 100) {
-						range = ((TileEntityMobSpawner) o).getSpawnerBaseLogic().spawnRange;
-					}else {
-						range = -1;
+			try {
+				for(Object o : mc.world.loadedTileEntityList) {
+					if(o instanceof TileEntityMobSpawner) {
+						if(Client.settings.getSettingsByMod(this).get(0).isValue_b() &&
+								mc.player.getDistanceSq(((TileEntity) o).getPos()) < 100) {
+							range = ((TileEntityMobSpawner) o).getSpawnerBaseLogic().spawnRange;
+						}else {
+							range = -1;
+						}
+						
+						RenderUtil.spawner(
+								((TileEntity) o).getPos().getX() - mc.getRenderManager().renderPosX,
+								((TileEntity) o).getPos().getY() - mc.getRenderManager().renderPosY,
+								((TileEntity) o).getPos().getZ() - mc.getRenderManager().renderPosZ,
+								Client.settings.getSettingsByMod(this).get(1).getValue_f(),
+								Client.settings.getSettingsByMod(this).get(2).getValue_f(),
+								Client.settings.getSettingsByMod(this).get(3).getValue_f(),
+								Client.settings.getSettingsByMod(this).get(4).getValue_f(),
+								-1);
 					}
-					
-					RenderUtil.spawner(
-							((TileEntity) o).getPos().getX() - mc.getRenderManager().renderPosX,
-							((TileEntity) o).getPos().getY() - mc.getRenderManager().renderPosY,
-							((TileEntity) o).getPos().getZ() - mc.getRenderManager().renderPosZ,
-							Client.settings.getSettingsByMod(this).get(1).getValue_f(),
-							Client.settings.getSettingsByMod(this).get(2).getValue_f(),
-							Client.settings.getSettingsByMod(this).get(3).getValue_f(),
-							Client.settings.getSettingsByMod(this).get(4).getValue_f(),
-							-1);
-					
-					//System.out.println(((TileEntityMobSpawner) o).getSpawnerBaseLogic().spawnRange);
 				}
+			} catch(Exception e) { 
+			    e.printStackTrace();
 			}
+			
 		}
 	}
 }
