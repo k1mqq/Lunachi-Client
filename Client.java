@@ -18,7 +18,6 @@ import KeemaCurry.modules.Module;
 import KeemaCurry.modules.mod.AntiNausea;
 import KeemaCurry.modules.mod.BossBar;
 import KeemaCurry.modules.mod.BreakTime;
-import KeemaCurry.modules.mod.Debag;
 import KeemaCurry.modules.mod.Discord;
 import KeemaCurry.modules.mod.EffectHUD;
 import KeemaCurry.modules.mod.HudEditer;
@@ -34,11 +33,12 @@ import KeemaCurry.modules.mod.Skill;
 import KeemaCurry.modules.mod.SkillBind;
 import KeemaCurry.modules.mod.SpawnerRenderer;
 import KeemaCurry.modules.mod.TargetHUD;
+import KeemaCurry.modules.mod.ToggleSprint;
 import KeemaCurry.modules.mod.TorchCounter;
 import KeemaCurry.modules.mod.UniqueItems;
 import KeemaCurry.ui.menu;
+import KeemaCurry.ui.Recipe.RecipeManager;
 import KeemaCurry.utils.DiscordRP;
-import KeemaCurry.utils.SessionChanger;
 import KeemaCurry.utils.SaveUtil.SaveLoad;
 import KeemaCurry.utils.font.FontUtil;
 import net.minecraft.client.Minecraft;
@@ -58,6 +58,8 @@ public class Client {
 	
 	public static FontRenderer fr = mc.fontRendererObj;
 	public static DiscordRP dis; 
+	
+	public static RecipeManager recipeManager = new RecipeManager();
 	
 	public static int counter = 0;
 	
@@ -94,6 +96,7 @@ public class Client {
 		//modules.add(new InvLock());
 		modules.add(new BreakTime());
 		modules.add(new NoGlitchBlock());
+		modules.add(new ToggleSprint());
 		
 		modules.sort(Comparator.comparing(it -> it.name));
 		saveload.load();
@@ -124,7 +127,6 @@ public class Client {
 			}
 		}
 		if(e instanceof EventUpdate) {
-			
 		}
 		if(e instanceof EventPacket) {
 		}
