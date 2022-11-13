@@ -8,3 +8,5 @@ TUSBのために作られた非公式のクライアント
 * でも便利（当社比）
 
 の三点がそろったクライアントです
+
+Discordサーバーは[こちら](https://discord.gg/mmRVy6apBt)
