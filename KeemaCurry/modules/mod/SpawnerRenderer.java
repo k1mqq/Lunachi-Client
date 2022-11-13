@@ -23,7 +23,7 @@ public class SpawnerRenderer extends Module{
 	}
 	
 	public SpawnerRenderer() {
-		super("SpawnerPlus",Category.RENDER);
+		super("SpawnerRenderer",Category.RENDER);
 	}
 	
 	public void onRender() {
@@ -32,7 +32,6 @@ public class SpawnerRenderer extends Module{
 			for(Object o : mc.world.loadedEntityList) {
 				if(o instanceof Entity) {
 					if(o instanceof EntityMinecartMobSpawner) {
-//						RenderUtil.entityESPBox((Entity) o, 1);
 						if(Client.settings.getSettingsByMod(this).get(0).isValue_b() &&
 								mc.player.getDistanceToEntity((Entity) o) <50) {
 							

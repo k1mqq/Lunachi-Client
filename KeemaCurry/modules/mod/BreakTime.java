@@ -15,12 +15,15 @@ public class BreakTime extends Module{
 	}
 	
 	public void onRender() {
-		BlockPos blockpos = mc.objectMouseOver.getBlockPos();
-		if(blockpos != null && !mc.world.isAirBlock(blockpos) && Mouse.isButtonDown(0)) {
-			RenderUtil.drawString3D(String.valueOf(Math.floor(mc.playerController.curBlockDamageMP * 1000) / 10) + "Åì", (float) (blockpos.getX() + 0.5f - mc.getRenderManager().renderPosX),
-					(float) (blockpos.getY() +0.5f - mc.getRenderManager().renderPosY),
-					(float) (blockpos.getZ() + 0.5f - mc.getRenderManager().renderPosZ), -1);
+		if(mc.objectMouseOver.getBlockPos() != null) {
+			BlockPos blockpos = mc.objectMouseOver.getBlockPos();
+			if(blockpos != null && !mc.world.isAirBlock(blockpos) && Mouse.isButtonDown(0)) {
+				RenderUtil.drawString3D(String.valueOf(Math.floor(mc.playerController.curBlockDamageMP * 1000) / 10) + "Åì", (float) (blockpos.getX() + 0.5f - mc.getRenderManager().renderPosX),
+						(float) (blockpos.getY() +0.5f - mc.getRenderManager().renderPosY),
+						(float) (blockpos.getZ() + 0.5f - mc.getRenderManager().renderPosZ), -1);
+			}
 		}
+		
 	}
 	
 	public void onEvent(Event e) {
