@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.entity.RenderPlayer;
 public class NightVision extends Module{
 
 	public NightVision() {
-		super("FullBlind",Category.CLIENT);
+		super("Fullbright",Category.CLIENT);
 	}
 	
 	@Override
@@ -24,7 +24,7 @@ public class NightVision extends Module{
 	}
 	public void onEvent(Event e) {
 		if(e instanceof EventUpdate) {
-			mc.gameSettings.gammaSetting = 100;
+			mc.gameSettings.gammaSetting = 1000;
 		}
 	}
 	

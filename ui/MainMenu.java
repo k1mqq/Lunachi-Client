@@ -26,7 +26,7 @@ public class MainMenu extends GuiScreen{
 		 this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2, I18n.format("menu.singleplayer", new Object[0])));
 	     this.buttonList.add(new GuiButton(2, this.width / 2 - 100, this.height / 2 + 20, I18n.format("menu.multiplayer", new Object[0])));
 	     this.buttonList.add(new GuiButton(4, this.width / 2 + 2, this.height / 2 + 80, 98, 20, I18n.format("menu.quit", new Object[0])));
-	     this.buttonList.add(new GuiButton(100, this.width / 2 -100, this.height / 2+60, 98, 20, "TUSBåˆéÆ"));
+	     this.buttonList.add(new GuiButton(100, this.width / 2 -100, this.height / 2+60, 98, 20, "TUSBÂÖ¨Âºè"));
 	     this.buttonList.add(new GuiButton(101, this.width / 2 +2, this.height / 2 + 60, 98, 20, "My Discord Server"));
 	     this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, this.height / 2+90));
 	     super.initGui();

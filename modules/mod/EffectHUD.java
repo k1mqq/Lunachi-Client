@@ -64,8 +64,8 @@ public class EffectHUD extends Module{
 	                s1 = s1 + " " + I18n.format("enchantment.level.4", new Object[0]);
 	            }
             	
-            	//fr.drawStringWithShadow(s1 + " Åò7" + Potion.getPotionDurationString(effect, 1.0F), sr.getScaledWidth() - fr.getStringWidth(s1 + " " + Potion.getPotionDurationString(effect, 1.0F)), sr.getScaledHeight() - (10 * count), potion.getLiquidColor());
-            	fr.drawStringWithShadow(s1 + " Åò7" + Potion.getPotionDurationString(effect, 1.0F), x - (fr.getStringWidth(s1 + " " + Potion.getPotionDurationString(effect, 1.0F)) * right), y + (10 * count * up), potion.getLiquidColor());
+            	//fr.drawStringWithShadow(s1 + " ÔøΩÔøΩ7" + Potion.getPotionDurationString(effect, 1.0F), sr.getScaledWidth() - fr.getStringWidth(s1 + " " + Potion.getPotionDurationString(effect, 1.0F)), sr.getScaledHeight() - (10 * count), potion.getLiquidColor());
+            	fr.drawStringWithShadow(s1 + " \u00A7f" + Potion.getPotionDurationString(effect, 1.0F), x - (fr.getStringWidth(s1 + " " + Potion.getPotionDurationString(effect, 1.0F)) * right), y + (10 * count * up), potion.getLiquidColor());
             	count++;
             }
 		}

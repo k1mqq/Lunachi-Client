@@ -44,7 +44,7 @@ public class TorchCounter extends Module{
 			}
 			FontRenderer fr = mc.fontRendererObj;
 			ScaledResolution sr = new ScaledResolution(mc);
-        	fr.drawStringWithShadow("ÅòeTorchÅ~" + count, x - fr.getStringWidth("TorchÅ~" + count), y, -1);
+        	fr.drawStringWithShadow("Torch x" + count, x - fr.getStringWidth("TorchÔøΩ~" + count), y, -1);
 		}
 	}
 }
