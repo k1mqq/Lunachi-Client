@@ -78,7 +78,7 @@ public class PlayerHUD extends Module{
 //							fr.getStringWidth(name + " " + Float.toString(Math.round(health*10f)/10f) + "��c\u2764 ��rMP:" + MP + 1) * health / player.getMaxHealth(),
 //							sr.getScaledHeight() - (10 * count) + 10, color.getRGB());//255, 57, 66, 200    new Color(92, 255, 135,180).getRGB()
 //					
-					fr.drawStringWithShadow(name + " " + Float.toString(Math.round(health*10f)/10f) + "\u00A7c\u2764 \u00A7dMP:" + MP,x + 1,y + offset, -1);
+					fr.drawStringWithShadow(name + " " + Float.toString(Math.round(health*10f)/10f) + "\u00A7c\u2764 \u00A7fMP:" + MP,x + 1,y + offset, -1);
 					count ++;
 				}
 			}

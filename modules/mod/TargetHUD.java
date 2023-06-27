@@ -30,7 +30,7 @@ public class TargetHUD extends Module{
 				
 				FontRenderer fr = mc.fontRendererObj;
 				ScaledResolution sr = new ScaledResolution(mc);
-	        	fr.drawStringWithShadow(name + " " + Float.toString(Math.round(hp*10f)/10f) + "Åòc\u2764", 1, 1, -1);
+	        	fr.drawStringWithShadow(name + " " + Float.toString(Math.round(hp*10f)/10f) + "\u00A7c\u2764", 1, 1, -1);
 			}
 		}
 	}
