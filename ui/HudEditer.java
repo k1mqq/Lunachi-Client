@@ -56,6 +56,8 @@ public class HudEditer extends GuiScreen{
 			Gui.drawRect(m.getX() - 3, m.getY() - 3, m.getX() + 3, m.getY() + 3, -1);
 			if(isHovered(mouseX, mouseY, m)) {
 				select = m;
+			}else {
+				select = null;
 			}
 			if(select != null && dragging) {
 				select.setX(mouseX);
