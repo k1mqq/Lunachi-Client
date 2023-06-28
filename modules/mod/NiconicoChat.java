@@ -8,6 +8,7 @@ import KeemaCurry.Client;
 import KeemaCurry.Event.Event;
 import KeemaCurry.Event.listener.EventChat;
 import KeemaCurry.Event.listener.EventRenderGUI;
+import KeemaCurry.Settings.Setting;
 import KeemaCurry.modules.Category;
 import KeemaCurry.modules.Module;
 import KeemaCurry.utils.Timer;
@@ -19,8 +20,14 @@ public class NiconicoChat extends Module{
 	public NiconicoChat() {
 		super("niconicoChat", Category.HUD);
 	}
+	
+	@Override
+	public void setup() {
+		super.setup();
+	}
 
 	public List<nicoText> text = new ArrayList<nicoText>();
+	ScaledResolution sr = new ScaledResolution(mc);
 	
 	@Override
 	public void onEvent(Event e) {
@@ -33,7 +40,7 @@ public class NiconicoChat extends Module{
 		
 		if(e instanceof EventRenderGUI) {
 			for(nicoText message : text) {
-				if(message.x == 0) {
+				if(message.x == -1 * mc.fontRendererObj.getStringWidth(message.message)) {
 					text.remove(message);
 					return;
 				}

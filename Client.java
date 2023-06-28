@@ -148,7 +148,7 @@ public class Client {
 	}
 	
 	public static void addChatMessage(String message) {
-		message = "˜b˜l[" + name + "]˜r " + message;
+		message = "\u00A7b[" + name + "]\u00A7r " + message;
 		mc.player.addChatMessage(message);
 	}
 
